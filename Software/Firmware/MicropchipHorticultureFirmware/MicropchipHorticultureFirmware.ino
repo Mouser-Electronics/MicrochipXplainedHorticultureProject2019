@@ -1,5 +1,6 @@
 /***************************************************************************
   Microchip Xplained Board 8-bit microcontroller Horticulture Project
+  - Arduino Uno Wifi Rev 2 feat. Microchip ATMega 4809
   - BME280 temperature and humidity sensor
   - STEMMA soil moisture sensor feat. Microchip ATSAMD10
   - DFRobot pH Sensor
@@ -10,16 +11,20 @@
 //Include needed support libriaries
 #include <Wire.h>
 #include <WiFiEsp.h>
+#include <WiFiEspClient.h>
 #include <PubSubClient.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include <Adafruit_seesaw.h>
+#include "SoftwareSerial.h"
 #include "secretstuff.h"
 
 //Decalre instances of sensors and wifi objects
 Adafruit_BME280 bme;
 Adafruit_seesaw soilSensor;
+SoftwareSerial soft(2, 3); // RX, TX
 WiFiEspClient wifiClient;
+
 
 //Control variables for MQTT connection to MediumOne servers
 static int heartbeat_timer = 0;
@@ -46,11 +51,13 @@ const int phSensorPin = A0;
 void setup() {
 
   Serial.begin(9600);
+  soft.begin(9600);
   while (!Serial) {}
 
   Serial.println(F("Initializing hardware settings..."));
 
   Serial.println(F("Attempting to connect to WiFi network..."));
+  WiFi.init(&soft);
   WiFi.begin(myssid, myssidpw);
   delay(5000);
 
