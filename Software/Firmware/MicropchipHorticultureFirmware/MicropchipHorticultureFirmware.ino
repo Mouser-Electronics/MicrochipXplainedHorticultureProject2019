@@ -196,7 +196,6 @@ void sensor_loop() {
   float humidity = 0.0;
   float tempC = 0.0;
   float moistureLevel = 0.0;
-  float phAnalogReading = 0.0;
   float phLevel = 0.0;
   float co2Level = 0.0;
 
@@ -206,8 +205,7 @@ void sensor_loop() {
     tempC = bme.readTemperature();
     humidity = bme.readHumidity();
     moistureLevel = soilSensor.touchRead(0);
-    phAnalogReading = analogRead(phSensorPin) * vref / 1024.0;
-    phLevel = 3.5 * phAnalogReading + phOffset;
+    phLevel = getPHlevel();
     co2Level = co2sensor.readCO2level();
 
     String payload = "{\"event_data\":{\"temperature\":";
@@ -266,4 +264,20 @@ void heartbeat_loop() {
       }
     }
   }
+}
+
+
+
+
+
+/*****************************************************
+   Function: getPHreading
+   Inputs: None
+   Return: None
+   Description:  
+ *****************************************************/
+float getPHlevel() {
+  float phAnalogReading = analogRead(phSensorPin) * vref / 1024.0;
+  float phLevel = 3.5 * phAnalogReading + phOffset;
+  return phLevel;
 }

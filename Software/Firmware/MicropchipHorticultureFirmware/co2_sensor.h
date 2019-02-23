@@ -1,5 +1,5 @@
 #ifndef CO2_SENSOR_H
-#define CO_2SENSOR_H
+#define CO2_SENSOR_H
 
 #if (ARDUINO >= 100)
  #include "Arduino.h"
