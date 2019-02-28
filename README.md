@@ -9,4 +9,4 @@ Horticulture Sensor Project powered by:
 - DFRobots soil pH sensor
 - DFRobots CO2 sensor
 
-BOM: https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=ca8618cd85
+BOM: https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=F9EF1AE298
