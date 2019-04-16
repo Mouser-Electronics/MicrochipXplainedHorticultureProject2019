@@ -10,3 +10,5 @@ Horticulture Sensor Project powered by:
 - DFRobots CO2 sensor
 
 BOM: https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=F9EF1AE298
+
+Project Article: https://www.mouser.com/applications/smarter-green-thumb-powered-by-microchip/
